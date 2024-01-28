@@ -28,8 +28,16 @@ export const register = async (req, res) => {
         await userRegister.save();
 
 
+        //llamamos a la utilidad para generar el token.
+        const { token, expiresIn } = generateToken(userRegister._id);
+
+        //llamamos a la utilidad para generar el refresh token.
+        generateRefreshToken(userRegister._id, res); //a direnferencia del generateToken este resibe dos param que es el uid y el res de este metodo por que si no funcionaria ya que estamos usando el res para crear la cookie.
+
+
+
         //status 201 es de solisitud creada.
-        return res.status(201).json({ ok: "register" })
+        return res.status(201).json({ token, expiresIn })
 
 
     } catch (error) {
@@ -46,7 +54,6 @@ export const register = async (req, res) => {
 }
 
 export const login = async (req, res) => {
-
 
     try {
 

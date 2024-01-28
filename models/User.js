@@ -6,7 +6,7 @@ const userSchema = new Schema({
 
     email: {
 
-        type: String,
+        type: String,//como tenemos de tipo string el objeto email, mongoose solo va a esperar ese string por lo tanto si mandan un objeto malicioso { $ne: 1} como consulta no lo tomaria ya que espera ese string( esto segun mongoose sanitize).
         required: true,
         trim: true, // colocamos trim para limpiar los campos 
         unique: true,

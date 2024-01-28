@@ -13,7 +13,7 @@ form.addEventListener("submit", async (e) => {
         //ahora vamos a hacer nuestra solicitud a la DB con el metodo fetch(), solo podemos usar este metodo cuando el archivo js es interpretado por el navegador
         // va hacer la solicitud a nuestro login que esta en la ruta "/api/v1/auth/login"
         // por defecto el fetch hace una solicitud en get
-        const res = await fetch("/api/v1/auth/login", {
+        const res = await fetch("http://localhost:5000/api/v1/auth/login", {
             //aqui vamos hacer la configuracion de la solicitud que le vamos hacer al Backend osea nuestra DB.
             method: "POST", // tipo de metodo
             headers: { // establecemos el encabezado, diciendo que el intercabio de info va hacer en Json.

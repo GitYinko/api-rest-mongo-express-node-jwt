@@ -1,5 +1,5 @@
 //IMPORTACIONES
-import { validationResult } from "express-validator" // vamos a capturar los errores de las validaciones, es decir, obtener los resutados de esas validaciones.
+import { validationResult } from "express-validator" // vamos a capturar los errores de las validaciones, es decir, obtener los resultados de esas validaciones.
 
 
 export const validationResultExpress = (req, res, next) => {

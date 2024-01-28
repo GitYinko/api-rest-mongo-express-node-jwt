@@ -21,3 +21,23 @@
 -En el dia de la fecha 4 de enero de 2024. hicimos el guardado del token(Persistencia del token) en dos metodos diferente pero pocos seguros que son: localStorage que es el mas inseguro y cookie que es mas seguro que localStorage pero ninguno de estos va hacer el definitivo. Estos fueron solo de practica.
 
 -En el dia de la fecha 5 de enero de 2024. Hicimos el metodo RefreshToken que es el metodo definitivo para guardar el token y que persista, este metodo consiste en tener dos token uno que nos permita refrescar y otro que nos permita hacer las peticiones a las rutas que hacen las consultas la DB. Lo primero que hicimos fue crear un segundo metodo en tokenManager.js que es para generar el refreshToken y guardarlo en una cookie, despues hicimos un middleware para validar ese refreshToken mediante el token que guardamos en ese cookie, tambien creamos un controlador para una vez que el refresh token sea valido poder crear uno nuevo y refrescarlo, todo esto lo ejecutamos desde una ruta llamada "/refresh", despues creamos un metodo fetch en el archivo protected.js donde consumimos la ruta "/refresh" donde le pasamos las credenciales para poder acceder al nombre de la cookie y creamos otro fetch para consultar los datos del usuario ya que tendriamos acceso gracias al refreshToken que nos proporsiona el token original y seguro para poder hacer esas petisiones.
+
+-En el dia de la fecha 8 de enero de 2024. Hicimos el cierre de session para destruir el contenido de la cookie caundo el usuario cierra su session.
+
+-En el dia de la fecha 9 de enero de 2024. Hicimos una refatorizacion de codigo, tambien hicimos un middleware para las validaciones de las rutas de autenticacion llamado "validatorManger".
+
+-En el dia de la fecha 10 de enero de 2024. Creamos el modelo LINK con su Schema, tambien creamos las rutas de ese modelo para hacer los metodos CRUD, donde para ello tambien hicimos el controlador, que como primer metodo hicimos el READ que es un metodo GET de solo lectura donde trajimos los link por uid de usuario.
+
+-En el dia de la fecha 11 de enero de 2024. Hicimos el metodo createLink para crear las url por usuario en el controlador de link, tambien agreagamos mas validaciones de express en el middleware validatorManager para el token y el refres token. y por ultimo en el controlador del auth en el metodo register agregamos los metodos de generar token y refresh token. Proxima clase seguimos puliendo el metodo CREATE donde vamos a validar la url con axios.
+
+-En el dia de la fecha 12 de enero de 2024. Hicimos la validacion de las url, donde creamos un metodo "linkValidator" en el middleware "validatorManager" que consiste en validar que la url sea correcta, que no este vacia y que solo sea en un formato seguro como "https://" usamos el paquete express-validator para las validaciones y el paquete Axios para la lectura de la url con el verbo "GET" Y evaluar que sea una url ya que axios se encarga de hacer solicitudes.
+
+-En el dia de la fecha 15 de enero de 2024. Hicimos un metodo CRUD para buscar un link especifico mediante la propiedad nanolink del Modelo Link este metodo es de lectura(READ), tambien hicimos otro metodo CRUD para remover un link en especifico utilizando la misma estructura del metodo anterior ya que utilizamos el nanolink para eliminar ese link en especifico, este metodo CRUD es de eliminacion (DELETE).
+
+-En el dia de la fecha 17 de enero de 2024. Hicimos el ultimo metodo CRUD que es el UPDATE, tambien le agregamos validaciones a los params que recibimos en la URL para asegurar que el nanolink que pasamos por param sea valido. 
+
+-En el dia de la fecha 17 de enero de 2024. Modificamos el metodo CRUD getLink que es para la busqueda del link para que sea publico y que cualquiera pueda acceder a la busqueda, tambien hicimos de modo de ejemplo el redireccionamiento del lado del back 
+
+-En el dia de la fecha 22 de enero de 2024. Vimos lo que es mongoose sanitize y que si en el modelo especificamos que la pripiedad type sea de tipo string no deveria aceptar una consulta en tipo objeto "{ $en: 1}" ya que de este modo pueden enviar consultas malisiosas en las petisiones https. Si la propiedad seria de tipo Objet se deberia aplicar el metodo sanitize de express mongoose sanitize si estamos trabajando con DB noSQL como MongoDB. 
+
+-En el dia de la fecha 23 de enero de 2024. Hicimos las seguridad del acceso a nuestro backend desde un servidor con el middleware CORS que nos permite la comunicacion entre servidores que solo nosotros le demos acceso para que nuestro back no sea accedido por cualquira.
